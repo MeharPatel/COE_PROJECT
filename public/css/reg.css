@@ -1,0 +1,96 @@
+::-webkit-scrollbar{
+    display: none;
+}
+
+body{
+    background-color: rgb(11, 0, 107);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle{
+    background-color: beige;
+    height: 50em;
+    width: 50em;
+    display: flex;
+    border-radius: 4%;
+    overflow: hidden;
+    box-shadow: 1em 2em 4em black;
+}
+
+.image{
+    margin-left: -0.75em;
+    height: 100%;
+    width: 40%;
+    background: url('../images/pic10.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.reg{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    height: 10%;
+}
+
+.logo img{
+    height: 100%;
+}
+
+.inp_text{
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(11, 0, 107);
+}
+
+.form-control{
+    align-self: center;
+    width: 90%;
+    height: 120%;
+    background-color: rgba(11, 0, 107, 0.2);
+    border: 0.1em solid rgb(11, 0, 107);
+    border-radius: 0.5em;
+}
+
+input::placeholder{
+    color: black;
+}
+
+.btn{
+    height: 100%;
+    width: 75%;
+    background-color: rgb(11, 0, 107);
+    color: white;
+}
+
+.btn:hover{
+    background-color: rgba(11, 0, 107, 0.5);
+    border: 0.1em solid rgb(11, 0, 107);
+}
+
+.inp_show{
+    display: flex;
+}
+
+.inp_show .show_box{
+    height: 100%;
+}
+
+.inp_show .show_box input{
+    height: 100%;
+}
+
+@media screen and (max-width: 769px) {
+    .image{
+        display: none;
+    }
+
+    .reg{
+        width: 100%;
+    }
+}
