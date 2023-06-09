@@ -22,10 +22,18 @@
             <div class="inp_email mt-3 text-center">
                 <input type="email" name="email" placeholder="Email">
             </div>
-            <div class="inp_pass mt-5 text-center">
-                <input type="password" name="password" placeholder="Password">
+            <div class="inp_pass mt-5 mb-3 text-center">
+                <input id="pass" type="password" name="password" placeholder="Password">
             </div>
-            <div class="inp_btn mt-5 text-center">
+            <div class="inp_show mt-1 ms-5">
+                <div class="show_box"> 
+                    <input type="checkbox" name="show" id="show" onclick="showpassword()">
+                </div>
+                <div class="show_label">
+                    <label for="show">Show Password</label>
+                </div>
+            </div>
+            <div class="inp_btn mt-4 text-center">
                 <input type="submit" value="Login">
             </div>
             <div class="inp_text fs-6 mt-4 text-center">
@@ -34,5 +42,16 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function showpassword() {
+            let showbox = document.getElementById("show");
+            if (showbox.checked == true){
+                document.getElementById("pass").type = "text";
+            } else {
+                document.getElementById("pass").type = "password";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -10,58 +10,37 @@
     <link rel="stylesheet" href="css/reg.css">
 </head>
 <body class="container-fluid">
-    <div class="container middle my-5">
+    <div class="container middle my-5" style="height: 42em;">
         <div class="image"></div>
-        <form action="/userinsert" method="post" enctype="multipart/form-data" class="reg">
+        <form action="/recinsert" method="post" class="reg">
             <div class="logo text-center mt-4"><img src="images/logo11.jpg" alt="Logo"></div>
             <div class="inp_text mt-2">
                 <p class="fs-2 text-center">Register Here</p>
             </div>
             <div class="ms-5 text-center">
-                <input class="form-control" type="name" name="name" id="name" placeholder="Name" required>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name" required>
             </div>
             <div class="mt-3 ms-5 text-center">
                 <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="text" name="phone" id="phone" placeholder="Mobile No." required>
+                <input class="form-control" type="text" name="phone" pattern="[0-9]{10}" id="phone" placeholder="Mobile No." required>
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="text" name="company" id="company" placeholder="Company Name" required>
+                <input class="form-control" type="text" name="company" pattern="[A-Za-z]" id="company" placeholder="Company Name" required>
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="text" name="birthdate" id="birthdate" placeholder="Birthdate" onfocus="(this.type='date')" required>
+                <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password" required>
             </div>
             <div class="mt-3 ms-5 text-center">
-                <select class="form-control" name="edu" id="education">
-                    <option value="None">Education Qulification</option>
-                    <option value="under 10th">under 10th</option>
-                    <option value="10th Passed">10th Passed</option>
-                    <option value="12th Passed">12th Passed</option>
-                    <option value="Bachelor">Bachelor</option>
-                    <option value="Masters">Masters</option>
-                  </select>
-            </div>
-            <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
-            </div>
-            <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="password" name="c_password" id="c_password" placeholder="Confirm Password" required>
+                <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password" required>
             </div>
             <div class="inp_show mt-1 ms-5">
                 <div class="show_box">
-                    <input type="checkbox" name="show" id="show">
+                    <input type="checkbox" name="show" id="show" onclick="showpassword()">
                 </div>
                 <div class="show_label">
                     <label for="show">Show Password</label>
-                </div>
-            </div>
-            <div class="mt-2 ms-5">
-                <div class="profile_label text-left">
-                    <label for="image">Resume File</label>
-                </div>
-                <div class="profile_file">
-                    <input class="form-control" type="file" name="image" placeholder="Choose Profile">
                 </div>
             </div>
             <div class="mt-3 text-center">
@@ -73,5 +52,18 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function showpassword() {
+            let showbox = document.getElementById("show");
+            if (showbox.checked == true){
+                document.getElementById("pass1").type = "text";
+                document.getElementById("pass2").type = "text";
+            } else {
+                document.getElementById("pass1").type = "password";
+                document.getElementById("pass2").type = "password";
+            }
+        }
+    </script>
 </body>
 </html>

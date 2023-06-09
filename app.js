@@ -2,6 +2,12 @@ const express = require('express')
 const app = express()
 const web = require('./routes/web')
 const port = 3000
+const connectdb = require('./DB/connectdb')
+
+app.use(express.urlencoded({extended : true}))
+
+//connectdb
+connectdb()
 
 //ejs set
 app.set('view engine', 'ejs')
@@ -13,5 +19,5 @@ app.use(express.static('public'))
 app.use('/',web)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })

@@ -66,7 +66,18 @@ input::placeholder{
     width: 75%;
     background-color: rgb(11, 0, 107);
     color: white;
+}
 
+.inp_show{
+    display: flex;
+}
+
+.inp_show .show_box{
+    height: 100%;
+}
+
+.inp_show .show_box input{
+    height: 100%;
 }
 
 @media screen and (max-width: 769px) {
