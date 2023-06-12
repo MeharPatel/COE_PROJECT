@@ -12,22 +12,27 @@
 <body class="container-fluid">
     <div class="container middle my-5">
         <div class="image"></div>
-        <form action="/empinsert" method="post" class="reg">
+        <form action="/empinsert" method="post" enctype="multipart/form-data" class="reg">
             <div class="logo text-center mt-4"><img src="images/logo11.jpg" alt="Logo"></div>
             <div class="inp_text mt-2">
                 <p class="fs-2 text-center">Register Here</p>
             </div>
+            <% if(message.length > 0){ %>
+                <div class="alert alert-danger mx-5">
+                    <%= message %>
+                </div>
+            <% } %>
             <div class="ms-5 text-center">
-                <input class="form-control" type="text" name="name" id="name" placeholder="Name" required>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name" autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
+                <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="text" name="phone" pattern="[0-9].{10}" id="phone" placeholder="Mobile No." required>
+                <input class="form-control" type="text" name="phone" pattern="[0-9]{10}" id="phone" placeholder="Mobile No." autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="text" name="age" pattern="[0-9].{,2}" id="age" placeholder="Age" required>
+                <input class="form-control" type="text" name="age" pattern="[0-9]{,2}" id="age" placeholder="Age" autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
                 <select class="form-control" name="edu" id="education">
@@ -40,25 +45,25 @@
                   </select>
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password" required>
+                <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password" required>
+                <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password">
             </div>
-            <div class="inp_show mt-1 ms-5">
+            <div class="inp_show mt-3 ms-5">
                 <div class="show_box">
                     <input type="checkbox" name="show" id="show" onclick="showpassword()">
                 </div>
-                <div class="show_label">
+                <div class="show_label ms-2">
                     <label for="show">Show Password</label>
                 </div>
             </div>
             <div class="mt-2 ms-5">
-                <div class="profile_label text-left">
-                    <label for="image">Resume File</label>
+                <div class="resume_label text-left">
+                    <label for="resume">Resume File (Please Enter PDF File)</label>
                 </div>
-                <div class="profile_file">
-                    <input class="form-control" type="file" name="image" placeholder="Choose Profile">
+                <div class="resume_file">
+                    <input class="form-control" type="file" name="resume" placeholder="Choose Profile">
                 </div>
             </div>
             <div class="mt-3 text-center">
@@ -71,6 +76,7 @@
             </div>
         </form>
     </div>
+        <div class="wave" style="bottom: -15em;"></div>
 
     <script>
         function showpassword() {

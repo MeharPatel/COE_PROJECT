@@ -17,34 +17,40 @@
             <div class="inp_text mt-2">
                 <p class="fs-2 text-center">Register Here</p>
             </div>
+            <% if(message.length > 0){ %>
+                <div class="alert alert-danger mx-5">
+                    <%= message %>
+                </div>
+            <% } %>
             <div class="ms-5 text-center">
-                <input class="form-control" type="text" name="name" id="name" placeholder="Name" required>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name" autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
+                <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="text" name="phone" pattern="[0-9]{10}" id="phone" placeholder="Mobile No." required>
+                <input class="form-control" type="text" name="phone" pattern="[0-9]{10}" id="phone" placeholder="Mobile No." autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input class="form-control" type="text" name="company" pattern="[A-Za-z]" id="company" placeholder="Company Name" required>
+                <input class="form-control" type="text" name="company" id="company" placeholder="Company Name" autocomplete="off">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password" required>
+                <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password">
             </div>
             <div class="mt-3 ms-5 text-center">
-                <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password" required>
+                <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password">
             </div>
-            <div class="inp_show mt-1 ms-5">
+            <div class="inp_show mt-3 ms-5">
                 <div class="show_box">
                     <input type="checkbox" name="show" id="show" onclick="showpassword()">
                 </div>
-                <div class="show_label">
+                <div class="show_label ms-2">
                     <label for="show">Show Password</label>
                 </div>
             </div>
             <div class="mt-3 text-center">
                 <input class="btn" type="submit" value="Register">
+                <input class="btn" type="reset" value="Reset">
             </div>
             <div class="inp_text fs-6 mt-2 text-center">
                 Already Have An Account?
@@ -52,6 +58,7 @@
             </div>
         </form>
     </div>
+    <div class="wave" style="bottom: -6.5em;"></div>
 
     <script>
         function showpassword() {

@@ -19,17 +19,22 @@
             <div class="inp_text mt-4">
                 <p class="fs-2 text-center">Login</p>
             </div>
+            <% if(message.length > 0){ %>
+                <div class="alert alert-danger mx-5">
+                    <%= message %>
+                </div>
+            <% } %>
             <div class="inp_email mt-3 text-center">
                 <input type="email" name="email" placeholder="Email">
             </div>
             <div class="inp_pass mt-5 mb-3 text-center">
                 <input id="pass" type="password" name="password" placeholder="Password">
             </div>
-            <div class="inp_show mt-1 ms-5">
+            <div class="inp_show mt-3">
                 <div class="show_box"> 
                     <input type="checkbox" name="show" id="show" onclick="showpassword()">
                 </div>
-                <div class="show_label">
+                <div class="show_label ms-2">
                     <label for="show">Show Password</label>
                 </div>
             </div>
@@ -42,6 +47,7 @@
             </div>
         </form>
     </div>
+    <div class="wave" style="bottom: 0em;"></div>
 
     <script>
         function showpassword() {

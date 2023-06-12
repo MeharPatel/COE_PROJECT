@@ -3,11 +3,11 @@
 }
 
 .navbar {
-    background-color: rgb(11, 0, 107);
+    background-color: rgb(46, 171, 255);
 }
 
 .navbar .navbar-brand img{
-    height: 2.7em;
+    height: 2.3em;
 }
 
 .bg {
@@ -46,6 +46,46 @@
     transition: 0.5s all ease-out 0s;
 }
 
+.card:nth-child(4n+1){
+    background: url('../images/pic29.jpg') no-repeat center center;
+    background-size: cover;
+    border: 0.1em solid rgb(0, 114, 190);
+    border-radius: 1em;
+}
+.card:nth-child(4n+2){
+    background: url('../images/pic27.jpg') no-repeat center center;
+    background-size: cover;
+    border: 0.1em solid rgb(0, 114, 190);
+    border-radius: 1em;
+}
+.card:nth-child(4n+3){
+    background: url('../images/pic26.jpg') no-repeat center center;
+    background-size: cover;
+    border: 0.1em solid rgb(0, 114, 190);
+    border-radius: 1em;
+}
+.card:nth-child(4n+0){
+    background: url('../images/pic28.jpg') no-repeat center center;
+    background-size: cover;
+    border: 0.1em solid rgb(0, 114, 190);
+    border-radius: 1em;
+}
+.card{
+    overflow: hidden;
+    border-radius: 2em;
+}
+
+.card .card-header, .card .card-footer{
+    background-color: rgba(0, 114, 190, 0.8);
+    color: white;
+}
+
+.card .card-body{
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0.2em);
+    color: beige;
+}
+
 .card:hover{
     transform-style: preserve-3d;
     perspective: 1em;
@@ -53,17 +93,49 @@
     transition: 0.5s all ease-out 0s;
 }
 
-#my_account .buttons .btn{
-    border: 0.1em solid rgb(0, 64, 107);
-    color: rgb(0, 64, 107);
-}
-
-#my_account .buttons .btn:hover{
-    background-color: rgb(0, 64, 107);
+.card .btn{
+    background-color: rgba(0, 114, 190, 0.8);
+    border: 0.1em solid rgb(0, 114, 190);
     color: white;
 }
+
+.card .btn:hover{
+    background-color: rgba(0, 114, 190, 0.2);
+    border: 0.1em solid rgb(0, 114, 190);
+    color: black;
+}
+
+#my_account table img{
+    border-radius: 50%;
+    height: 10em;
+    width: 10em;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#my_account .buttons .btn.edit{
+    background-color: rgb(0, 202, 0);
+    color: black;
+}
+#my_account .buttons .btn.delete{
+    background-color: rgb(255, 0, 0);
+    color: black;
+}
+
+#my_account .buttons .btn.edit:hover{
+    background-color: rgba(0, 202, 0, 0.2);
+    border: 0.1em solid rgb(0, 202, 0);
+    color: rgb(0, 202, 0);
+}
+#my_account .buttons .btn.delete:hover{
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 0.1em solid rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+}
+
 .end {
-    background-color: rgb(0, 64, 107);
+    background-color: rgb(0, 114, 190);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -88,4 +160,17 @@
 .end-contact {
     width: 50%;
     margin-right: 3em;
+}
+
+.modal#addjob .modal-header{
+    background-color: rgba(0, 114, 190, 0.8);
+    color: white;
+    z-index: 2;
+}
+.modal#addjob .modal-body{
+    background-color: rgba(46, 171, 255, 0.3);
+    z-index: 2;
+    backdrop-filter: blur(0.5em);
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
 }

@@ -1,0 +1,40 @@
+<%- include('./rec_header.ejs') %>
+
+<script>
+  deactiveLink();
+  activeLink(2);
+</script>
+
+  <div id="my_account" class="container-fluid mt-5">
+    <table class="container table my-5">
+      <tbody> 
+        <tr>
+          <td colspan="2" class="text-center">
+            <img src="#" alt="Profile">
+          </td>
+        </tr>
+        <tr>
+          <td class="py-3">Name : </td>
+          <td class="py-3">name</td>
+        </tr>
+        <tr>
+          <td class="py-3">Email : </td>
+          <td class="py-3">email</td>
+        </tr>
+        <tr>
+          <td class="py-3">Mobile No.:</td>
+          <td class="py-3">number</td>
+        </tr>
+        <tr>
+          <td class="py-3">Company : </td>
+          <td class="py-3">company</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="buttons text-end mb-5 me-5">
+      <button type="button" class="btn me-5 edit">Edit My Details</button>
+      <button type="button" class="btn me-5 delete">Delete My Account</button>
+    </div>
+  </div>
+
+<%- include('./footer.ejs') %>

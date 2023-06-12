@@ -1,4 +1,4 @@
-<%- include('./header.ejs') %>
+<%- include('./rec_header.ejs') %>
 
   <script>
     deactiveLink();
@@ -7,34 +7,44 @@
 
   <div class="container my-5" id="jobs">
     <div class="buttons text-center">
-      <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(0, 64, 107); color: rgb(0, 64, 107);">All</button>
-      <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(0, 64, 107); color: rgb(0, 64, 107);">Announced</button>
-      <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(0, 64, 107); color: rgb(0, 64, 107);">Available</button>
+      <input type="button" class="btn me-5" onclick="showalljobs()"
+        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);" value="All">
+      <input type="button" class="btn" onclick="showannounced()"
+        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);" value="Announced">
     </div>
 
-    <div class="cards">
-      <% d.forEach((item) => { %>
+    <% if(message1.length > 0){ %>
+      <div class="alert alert-danger mx-5 my-3">
+          <%= message1 %>
+      </div>
+    <% } %>
+    <% if(message2.length > 0){ %>
+      <div class="alert alert-success mx-5 my-3">
+          <%= message2 %>
+      </div>
+    <% } %>
 
+    <div class="cards">
+      <% d.forEach((item)=> { %>
         <div class="card text-center my-5">
-          <div class="card-header fs-4" style="background-color: rgba(0, 111, 185, 0.5);">
+          <div class="card-header fs-4">
             <%= item.jobname %>
           </div>
           <div class="card-body">
             <h5 class="card-title">Company name</h5>
-            <p class="card-text"> <%= item.description %> </p>
+            <p class="card-text">
+              <%= item.description %>
+            </p>
             <p class="card-text">Posted by</p>
-            <a href="#" class="btn" style="background-color: rgb(0, 64, 107); color: white;">Apply</a>
-            <a href="#" class="btn" style="background-color: rgb(0, 64, 107); color: white;">Check Details</a>
+            <p class="card-text"><%= item.start_sal %> To <%= item.end_sal %> Per Annum</p>
+            <a href="#" class="btn me-3 disabled">Apply</a>
+            <a href="#" class="btn">Check Details</a>
           </div>
-          <div class="card-footer text-body-secondary"
-            style="background-color: rgba(0, 111, 185, 0.5); font-weight: 500;">
+          <div class="card-footer fs-6">
             2 days ago
           </div>
         </div>
-      <% }) %>
+        <% }) %>
     </div>
     <div class="text-center job_add">
       <a href="#" data-bs-toggle="modal" data-bs-target="#addjob">
@@ -53,23 +63,29 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/addjobs" method="post">
+          <form action="/addjobs" method="post" enctype="multipart/form-data">
             <div class="text-center">
-              <input class="form-control" type="text" name="jobname" id="jobname" placeholder="Job Title" required>
+              <input class="form-control" type="text" name="jobname" id="jobname" placeholder="Job Title">
             </div>
             <div class="mt-3 text-center">
               <input class="form-control" type="text" name="tilldate" id="tilldate" placeholder="Available Till Date"
-                onfocus="(this.type = 'date')" onfocusout="(this.type='text')" required>
+                onfocus="(this.type = 'date')" onfocusout="(this.type='text')">
             </div>
             <div class="mt-3 text-center">
-              <input class="form-control" type="text" name="fields" id="field" placeholder="Preferred Fields" required>
+              <input class="form-control" type="text" name="fields" id="field" placeholder="Preferred Fields">
             </div>
             <div class="mt-3 text-center">
               <textarea class="form-control" name="description" id="description" cols="30" rows="5"
                 placeholder="Enter a little about the job you are offering"></textarea>
             </div>
             <div class="mt-3 text-center">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <input class="form-control" type="number" name="start_sal" id="start_sal" placeholder="Starting Salary per Annum" style="width: 45%;" >
+              <input class="form-control" type="number" name="end_sal" id="end_sal" placeholder="Maximum Salary per Annum" style="width: 45%;">
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="file" name="skills" id="skills" placeholder="Choose File">
+            </div>
+            <div class="mt-3 text-center">
               <button type="submit" class="btn btn-primary">Announce Job</button>
             </div>
           </form>

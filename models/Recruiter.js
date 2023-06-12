@@ -21,7 +21,17 @@ const RecruiterSchema = new mongoose.Schema({
     password : {
         type : String,
         required : true,
-    }
+    },
+    profile : {
+        public_id : {
+            type : String,
+            default : 'COE_Project/Profile/default_user_modjhr.jpg',
+        },
+        url : {
+            type : String,
+            default : 'https://res.cloudinary.com/dk0yb5sm7/image/upload/v1686577120/COE_Project/Profile/default_user_modjhr.jpg',
+        },
+    },
 
 }, {timestamps : true})
 //create collection

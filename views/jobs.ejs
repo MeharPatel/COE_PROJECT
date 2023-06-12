@@ -8,18 +8,17 @@
   <div class="container my-5" id="jobs">
     <div class="buttons text-center">
       <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(0, 64, 107); color: rgb(0, 64, 107);">All</button>
+        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);">All</button>
       <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(0, 64, 107); color: rgb(0, 64, 107);">Applied</button>
+        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);">Applied</button>
       <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(0, 64, 107); color: rgb(0, 64, 107);">Available</button>
+        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);">Available</button>
     </div>
 
     <div class="cards">
       <% d.forEach((item)=> { %>
-
         <div class="card text-center my-5">
-          <div class="card-header fs-4" style="background-color: rgba(0, 111, 185, 0.5);">
+          <div class="card-header fs-4">
             <%= item.jobname %>
           </div>
           <div class="card-body">
@@ -28,11 +27,10 @@
               <%= item.description %>
             </p>
             <p class="card-text">Posted by</p>
-            <a href="#" class="btn" style="background-color: rgb(0, 64, 107); color: white;">Apply</a>
-            <a href="#" class="btn" style="background-color: rgb(0, 64, 107); color: white;">Check Details</a>
+            <a href="#" class="btn me-3">Apply</a>
+            <a href="#" class="btn">Check Details</a>
           </div>
-          <div class="card-footer text-body-secondary"
-            style="background-color: rgba(0, 111, 185, 0.5); font-weight: 500;">
+          <div class="card-footer fs-6">
             2 days ago
           </div>
         </div>

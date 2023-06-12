@@ -22,6 +22,26 @@ const EmployeeSchema = new mongoose.Schema({
         type : String,
         required : true,
     },
+    resume : {
+        public_id : {
+            type : String,
+            required : true,
+        },
+        url : {
+            type : String,
+            required : true,
+        },
+    },
+    profile : {
+        public_id : {
+            type : String,
+            default : 'COE_Project/Profile/default_user_modjhr.jpg',
+        },
+        url : {
+            type : String,
+            default : 'https://res.cloudinary.com/dk0yb5sm7/image/upload/v1686577120/COE_Project/Profile/default_user_modjhr.jpg',
+        },
+    },
     password : {
         type : String,
         required : true,
