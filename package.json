@@ -19,6 +19,7 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.2.1"
+    "mongoose": "^7.2.1",
+    "vanilla-tilt": "^1.8.0"
   }
 }

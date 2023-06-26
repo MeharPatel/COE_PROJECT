@@ -3,46 +3,226 @@
 <script>
   deactiveLink();
   activeLink(2);
+  activeLink(4);
 </script>
 
   <div id="my_account" class="container-fluid mt-5">
     <table class="container table my-5">
       <tbody> 
         <tr>
-          <td colspan="2" class="text-center">
-            <img src="#" alt="Profile">
+          <td class="text-end">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#showprofile"><img src="<%= p.url %>" alt="Profile" class="mb-5"></a>
+            </td>
+            <td class="text-start ms-5">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#editprofileemp" style="text-decoration: none;">
+              <ion-icon name="create-outline" style="font-size: 1.2em;" class="mt-2"></ion-icon>Edit Profile
+            </a>
           </td>
         </tr>
         <tr>
           <td class="py-3">Name : </td>
-          <td class="py-3">name</td>
+          <td class="py-3"><%= n %></td>
         </tr>
         <tr>
           <td class="py-3">Email : </td>
-          <td class="py-3">email</td>
+          <td class="py-3"><%= e %></td>
         </tr>
         <tr>
           <td class="py-3">Mobile No.:</td>
-          <td class="py-3">number</td>
+          <td class="py-3"><%= ph %></td>
         </tr>
         <tr>
-          <td class="py-3">Birthdate : </td>
-          <td class="py-3">birthdate</td>
+          <td class="py-3">Age : </td>
+          <td class="py-3"><%= a %></td>
         </tr>
         <tr>
           <td class="py-3">Education Qulification : </td>
-          <td class="py-3">qulification</td>
+          <td class="py-3"><%= q %></td>
         </tr>
         <tr>
           <td class="py-3">Resume File : </td>
-          <td class="py-3">file</td>
+          <td class="py-3"><input type="button" value="Download file" class="btn btn-outline-info"><a href="<%= r.url %>" download="<%= r.url %>"></a></td>
         </tr>
       </tbody>
     </table>
+
+    <% if(message1.length > 0){ %>
+      <div class="alert alert-danger mx-5 my-3">
+          <%= message1 %>
+      </div>
+    <% } %>
+    <% if(message2.length > 0){ %>
+      <div class="alert alert-success mx-5 my-3">
+          <%= message2 %>
+      </div>
+    <% } %>
+
     <div class="buttons text-end mb-5 me-5">
-      <button type="button" class="btn me-5 edit">Edit My Details</button>
-      <button type="button" class="btn me-5 delete">Delete My Account</button>
+      <button type="button" class="btn me-5 edit" data-bs-toggle="modal" data-bs-target="#changepassemp">Change Password</button>
+      <button type="button" class="btn me-5 edit" data-bs-toggle="modal" data-bs-target="#editdetailsemp">Edit My Details</button>
+      <button type="button" class="btn me-5 delete" data-bs-toggle="modal" data-bs-target="#deleteemp">Delete My Account</button>
     </div>
   </div>
+
+  <!-- Show Profile Modal -->
+  <div class="modal fade" id="showprofile" tabindex="-1" aria-labelledby="showprofile" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="conatiner">
+            <img src="<%= p.url %>" alt="Profile" width="350">
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit Profile Modal -->
+  <div class="modal fade" id="editprofileemp" tabindex="-1" aria-labelledby="editprofileemp" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/editprofileemp" method="post" enctype="multipart/form-data">
+            <div class="text-center">
+              <input class="form-control" type="text" name="name" id="name" value="<%= n %>" readonly>
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="text" name="email" id="email" value="<%= e %>" readonly>
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="file" name="profile" id="profile">
+            </div>
+            <img src="<%= p.url %>" alt="Profile" width="100">
+            <div class="mt-3 text-center">
+              <button type="submit" class="btn btn-primary">Edit Profile Picture</button>
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Change Password Modal -->
+  <div class="modal fade" id="changepassemp" tabindex="-1" aria-labelledby="changepassemp" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/changepassemp" method="post">
+            <div class="text-center">
+              <input class="form-control" type="password" name="oldpass" id="oldpass" placeholder="Enter Old Password">
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="password" name="newpass" id="newpass" placeholder="Enter New Password">
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="password" name="conpass" id="conpass" placeholder="Confirm Password">
+            </div>
+            <div class="mt-3 text-end">
+              <input class="list-inline-item" type="checkbox" name="showbox" id="showbox" onclick="showpassword()">
+              <label for="showbox" class="list-inline-item">Show Password</label>
+            </div>
+            <div class="mt-3 text-center">
+              <button type="submit" class="btn btn-primary">Change Password</button>
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Edit Details Modal -->
+  <div class="modal fade" id="editdetailsemp" tabindex="-1" aria-labelledby="editdetailsemp" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/editdetailsemp" method="post" enctype="multipart/form-data">
+            <div class="text-center">
+              <input class="form-control" type="text" name="name" id="name" value="<%= n %>" readonly title="Cannot Change Name">
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="text" name="email" id="email" value="<%= e %>" readonly title="Cannot Change Email">
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="text" pattern="[0-9]{10}" name="phone" id="phone" value="<%= ph %>" title="Enter Valid Phone Number">
+            </div>
+            <div class="mt-3 text-center">
+              <input class="form-control" type="text" name="age" id="age" pattern="[0-9]{,2}" value="<%= a %>">
+            </div>
+            <div class="mt-3 text-center">
+              <select class="form-control" name="edu" id="education">
+                <option value="-1">Education Qulification</option>
+                <option value="under 10th">under 10th</option>
+                <option value="10th Passed">10th Passed</option>
+                <option value="12th Passed">12th Passed</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="Masters">Masters</option>
+              </select>
+            </div>
+            <div class="mt-3">
+              <div class="resume_label text-left">
+                <label for="resume">New Resume File (Please Enter PDF File)</label>
+            </div>
+            <div class="resume_file">
+                <input class="form-control" type="file" name="resume" accept="application/pdf" title="Enter Only Pdf Files">
+            </div>
+            </div>
+            <div class="mt-3 text-center">
+              <button type="submit" class="btn btn-primary">Edit Details</button>
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteemp" tabindex="-1" aria-labelledby="deleteemp" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: red;">Delete My Account</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/deleteemp" method="post" enctype="multipart/form-data">
+            <div class="text-center">
+              Do You Really Want To Delete Your Account??
+            </div>
+            <div class="mt-3 text-center">
+              <button type="submit" class="btn btn-danger">Delete Account</button>
+            </div>
+          </form>  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showpassword() {
+        let showbox = document.getElementById("showbox");
+        if (showbox.checked == true){
+            document.getElementById("oldpass").type = "text";
+            document.getElementById("newpass").type = "text";
+            document.getElementById("conpass").type = "text";
+        } else {
+            document.getElementById("oldpass").type = "password";
+            document.getElementById("newpass").type = "password";
+            document.getElementById("conpass").type = "password";
+        }
+    }
+</script>
 
 <%- include('./footer.ejs') %>

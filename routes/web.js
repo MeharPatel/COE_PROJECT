@@ -27,5 +27,16 @@ route.post('/recinsert', frontController.recinsert)
 route.post('/verifylogin', frontController.verifylogin)
 route.post('/decideuser', frontController.decideuser)
 route.post('/addjobs', CheckRecruiterAuth, frontController.addjobs)
+route.post('/editprofileemp', CheckEmployeeAuth, frontController.editprofileemp)
+route.post('/editprofilerec', CheckRecruiterAuth, frontController.editprofilerec)
+route.post('/changepassemp', CheckEmployeeAuth, frontController.changepassemp)
+route.post('/changepassrec', CheckRecruiterAuth, frontController.changepassrec)
+route.post('/deleteemp', CheckEmployeeAuth, frontController.deleteemp)
+route.post('/deleterec', CheckRecruiterAuth, frontController.deleterec)
+route.post('/editdetailsemp', CheckEmployeeAuth, frontController.editdetailsemp)
+route.post('/editdetailsrec', CheckRecruiterAuth, frontController.editdetailsrec)
+
+
+route.get('/pr', frontController.pr)
 
 module.exports = route

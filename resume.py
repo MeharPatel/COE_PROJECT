@@ -3,19 +3,16 @@ nltk.download('stopwords')
 
 from pyresparser import ResumeParser
 import os
-import nltk
 
 skills = 'skills.pdf'
-resume = 'Jeet.pdf'
+resume = 'resume.pdf'
 
 data = ResumeParser(skills).get_extracted_data()
 data2 = ResumeParser(resume).get_extracted_data()
 
 required_skills = str(data['skills'])
 candidate_skills = str(data2['skills'])
-candiadte_name = str(data2['name'])
-candiadte_number = str(data2['mobile_number'])
-candidate_email = str(data2['email'])
+
 
 content = [required_skills,candidate_skills]
 

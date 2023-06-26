@@ -3,6 +3,7 @@
   <script>
     deactiveLink();
     activeLink(1);
+    activeLink(4);
   </script>
 
   <div class="container my-5" id="jobs">
@@ -22,16 +23,17 @@
             <%= item.jobname %>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Company name</h5>
+            <h5 class="card-title">Company name : <%= item.bycompany %></h5>
             <p class="card-text">
               <%= item.description %>
             </p>
-            <p class="card-text">Posted by</p>
+            <p class="card-text">Posted by : <%= item.postedby %></p>
+            <p class="card-text"><%= item.start_sal %> To <%= item.end_sal %> Per Annum</p>
             <a href="#" class="btn me-3">Apply</a>
-            <a href="#" class="btn">Check Details</a>
+            <a href="/job_details" class="btn">Check Details</a>
           </div>
           <div class="card-footer fs-6">
-            2 days ago
+            Available Till <%= item.tilldate.toDateString() %>
           </div>
         </div>
         <% }) %>
@@ -55,5 +57,19 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 10,
+            speed: 1000,
+            glare: true,
+            "max-glare": 0.2,
+            scale: 1.05,
+            axis: "y",
+            gyroscope: true,
+            perspective: 700,
+        });
+    </script>
 
   <%- include('./footer.ejs') %>

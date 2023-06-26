@@ -10,37 +10,37 @@
     <link rel="stylesheet" href="css/reg.css">
 </head>
 <body class="container-fluid">
-    <div class="container middle my-5" style="height: 42em;">
+    <div class="container middle my-5" style="height: 37em;">
         <div class="image"></div>
         <form action="/recinsert" method="post" class="reg">
-            <div class="logo text-center mt-4"><img src="images/logo11.jpg" alt="Logo"></div>
-            <div class="inp_text mt-2">
-                <p class="fs-2 text-center">Register Here</p>
+            <div class="logo text-center mt-4 mb-3" style="--s: 8%"><img src="images/logo11.jpg" alt="Logo"></div>
+            <div class="inp_head" style="--i: 25%">
+                <p>Recruiter</p>
             </div>
             <% if(message.length > 0){ %>
                 <div class="alert alert-danger mx-5">
                     <%= message %>
                 </div>
             <% } %>
-            <div class="ms-5 text-center">
+            <div class="ms-3 text-center">
                 <input class="form-control" type="text" name="name" id="name" placeholder="Name" autocomplete="off">
             </div>
-            <div class="mt-3 ms-5 text-center">
+            <div class="mt-3 ms-3 text-center">
                 <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="off">
             </div>
-            <div class="mt-3 ms-5 text-center">
+            <div class="mt-3 ms-3 text-center">
                 <input class="form-control" type="text" name="phone" pattern="[0-9]{10}" id="phone" placeholder="Mobile No." autocomplete="off">
             </div>
-            <div class="mt-3 ms-5 text-center">
+            <div class="mt-3 ms-3 text-center">
                 <input class="form-control" type="text" name="company" id="company" placeholder="Company Name" autocomplete="off">
             </div>
-            <div class="mt-3 ms-5 text-center">
+            <div class="mt-3 ms-3 text-center">
                 <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password">
             </div>
-            <div class="mt-3 ms-5 text-center">
+            <div class="mt-3 ms-3 text-center">
                 <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password">
             </div>
-            <div class="inp_show mt-3 ms-5">
+            <div class="inp_show mt-3 ms-3">
                 <div class="show_box">
                     <input type="checkbox" name="show" id="show" onclick="showpassword()">
                 </div>
@@ -49,12 +49,12 @@
                 </div>
             </div>
             <div class="mt-3 text-center">
-                <input class="btn" type="submit" value="Register">
+                <input class="btn me-3" type="submit" value="Register">
                 <input class="btn" type="reset" value="Reset">
             </div>
             <div class="inp_text fs-6 mt-2 text-center">
                 Already Have An Account?
-                <a href="/">Click To Login</a>
+                <a href="/" class="link">Click To Login</a>
             </div>
         </form>
     </div>
@@ -71,6 +71,16 @@
                 document.getElementById("pass2").type = "password";
             }
         }
+    </script>
+    <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".middle"), {
+            max: 10,
+            speed: 1000,
+            glare: true,
+            "max-glare": 0.2,
+            scale: 1.03,
+        });
     </script>
 </body>
 </html>

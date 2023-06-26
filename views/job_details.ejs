@@ -1,4 +1,49 @@
-<%- include('./header.ejs') %>
+<%- include('./rec_header.ejs') %>
 
+<script>
+    deactiveLink();
+    activeLink(1);
+    activeLink(4);
+  </script>
+
+<div class="text-start back mt-3 ms-5">
+    <a href="/jobs" style="text-decoration: none;">
+      <ion-icon name="chevron-back-circle-outline" style="font-size: 3em; color: rgb(0, 64, 107);"></ion-icon>
+    </a>
+  </div>
+
+  <div class="details container text-center mb-3">
+    <div>
+        <p class="fs-1">JobName</p>
+    </div>
+    <div>
+        <p class="fs-5">
+            Posted By : Name 
+        </p>
+        <p class="fs-5">
+            From The Company : Company Name 
+        </p>
+    </div>
+    <div>
+        <p class="fs-6 text-center px-3">Description</p>
+    </div>
+    <div>
+        <p class="fs-5">
+            Applicable Till : Date
+        </p>
+    </div>
+    <div>
+        <p class="fs-5">
+            Salary Offered : From to To Per Annum
+        </p>
+    </div>
+    <div class="text-end">
+        <a href="#" class="btn me-3 disabled">Apply</a>
+    </div>
+  </div>
+
+  <div>
+    <i class="bi bi-toggle-off"></i>
+  </div>
 
 <%- include('./footer.ejs') %>

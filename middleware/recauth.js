@@ -7,7 +7,9 @@ const CheckRecruiterAuth = async(req, res, next) => {
         req.flash('error', 'Unauthorized user, Please Login!!')
         return res.redirect('/')
     } else {
-        const verify_token = jwt.verify(token, 'MeharPatel')
+        const verify_token = jwt.verify(token, 'Mehar Patel')
+        const data = await RecruiterModal.findOne({_id : verify_token.id})
+        req.recruiter = data
         next()
     }
 }

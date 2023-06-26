@@ -28,7 +28,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline"  style="margin-left: 25%;">
           <li class="nav-item ms-3">
             <a class="nav-link" aria-current="page" href="home">Home</a>
           </li>
@@ -41,11 +41,13 @@
           <li class="nav-item ms-3">
             <a class="nav-link" href="logout">Logout</a>
           </li>
-          <li class="nav-profile ms-3">
-            <a class="nav-link" href="logout">Logout</a>
+        </ul>
+        <ul class="navbar-nav nav-underline">
+          <li class="nav-name ms-3 active">
+            <a class="nav-link" href="my_account"><%= n %></a>
           </li>
           <li class="nav-profile ms-3">
-            <a class="nav-link" href="logout">Logout</a>
+            <a href="my_account"><img src="<%= p.url %>" alt="Profile"></a>
           </li>
         </ul>
       </div>

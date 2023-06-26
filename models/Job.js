@@ -6,8 +6,16 @@ const JobSchema = new mongoose.Schema({
         type : String,
         required : true,
     },
-    tilldate : {
+    postedby : {
         type : String,
+        required : true,
+    },
+    bycompany : {
+        type : String,
+        required : true,
+    },
+    tilldate : {
+        type : Date,
         required : true,
     },
     fields : {
@@ -18,12 +26,12 @@ const JobSchema = new mongoose.Schema({
         type : String,
         required : true,
     },
-    start_salary : {
-        type : Number,
+    start_sal : {
+        type : String,
         required : true,
     },
-    end_salary : {
-        type : Number,
+    end_sal : {
+        type : String,
         required : true,
     },
     skills : {

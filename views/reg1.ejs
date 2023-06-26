@@ -11,19 +11,18 @@
 </head>
 <body class="container-fluid">
     <div class="container middle my-5" style="height: 30em;">
-        <div class="image"></div>
         <form action="/decideuser" method="post" class="reg">
-            <div class="logo text-center mt-4"><img src="images/logo11.jpg" alt="Logo"></div>
-            <div class="inp_text mt-2">
-                <p class="fs-2 text-center">Register Here</p>
+            <div class="logo text-center mt-4 mb-5" style="--s: 10%"><img src="images/logo11.jpg" alt="Logo"></div>
+            <div class="inp_head" style="--i: 40%">
+                <p>Register</p>
             </div>
             <div class="ms-3 text-center">
                 <div class="label-cat">
                     <p class="fs-5">Are You looking for job openings? <br> OR <br> Are you looking to hiring employees?</p>
                 </div>
-                    <label>I'm an Employee </label>
+                    <label for="category">I'm an Employee </label>
                     <input type="radio" name="category" value="employee" checked>
-                    <label>I'm a Recruiter </label>
+                    <label for="category">I'm a Recruiter </label>
                     <input type="radio" name="category" value="recruiter">
             </div>
             
@@ -32,10 +31,20 @@
             </div>
             <div class="inp_text fs-6 mt-2 text-center">
                 Already Have An Account?
-                <a href="/">Click To Login</a>
+                <a class="link" href="/">Click To Login</a>
             </div>
         </form>
     </div>
     <div class="wave" style="bottom: 0em;"></div>
+    <script type="text/javascript" src="js/vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".middle"), {
+            max: 10,
+            speed: 1000,
+            glare: true,
+            "max-glare": 0.2,
+            scale: 1.05,
+        });
+    </script>
 </body>
 </html>
