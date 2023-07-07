@@ -141,9 +141,9 @@ class frontController {
                 req.flash('error', 'You Already Have An Account!')
                 res.redirect('/reg_emp')
             } else {
-                if (name && email && phone && password && c_password && age && edu == -1) {
+                if (name && email && phone && password && c_password && age) {
                     if (age >= 18) {
-                        if (edu == -1) {
+                        //if (edu == -1) {
                             if (password == c_password) {
                                 try {
                                     const hashpassword = await bcrypt.hash(password, 10)
@@ -169,10 +169,10 @@ class frontController {
                                 req.flash('error', 'Passwords Do Not Match!')
                                 res.redirect('/reg_emp')
                             }
-                        } else {
+                        /*} else {
                             req.flash('error', 'Please Select Your Education Qualification!')
                             res.redirect('/reg_emp')
-                        }
+                        }*/
                     } else {
                         req.flash('error', 'Your Age Is Not Enough To Use This Website!')
                         res.redirect('/reg_emp')
