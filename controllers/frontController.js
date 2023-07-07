@@ -515,16 +515,11 @@ class frontController {
         }
     }
 
+    
 
 
 
-    static pr = async (req, res) => {
-        try {
-            res.render("pr")
-        } catch (error) {
-            console.log(error)
-        }
-    }
+
 
 
 }

@@ -41,7 +41,8 @@
         </tr>
         <tr>
           <td class="py-3">Resume File : </td>
-          <td class="py-3"><input type="button" value="Download file" class="btn btn-outline-info"><a href="<%= r.url %>" download="<%= r.url %>"></a></td>
+          <td class="py-3">
+            <button class="btn btn-outline-info" type="submit"><a href="<%= r.url %>" download="<%= r.url %>" target="_blank" style="text-decoration: none;">Download Resume File</a></button>
         </tr>
       </tbody>
     </table>
@@ -64,12 +65,28 @@
     </div>
   </div>
 
+  <!-- Show Resume Modal -->
+  <div class="modal fade" id="showresume" tabindex="-1" aria-labelledby="showresume" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">My Resume</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="conatiner">
+            <img src="<%= r.url %>" alt="Resume" width="700">
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Show Profile Modal -->
   <div class="modal fade" id="showprofile" tabindex="-1" aria-labelledby="showprofile" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">My Profile</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

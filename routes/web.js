@@ -37,6 +37,5 @@ route.post('/editdetailsemp', CheckEmployeeAuth, frontController.editdetailsemp)
 route.post('/editdetailsrec', CheckRecruiterAuth, frontController.editdetailsrec)
 
 
-route.get('/pr', frontController.pr)
 
 module.exports = route
