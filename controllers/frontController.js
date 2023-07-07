@@ -278,7 +278,7 @@ class frontController {
                 res.redirect('/rec_jobs')
             } else {
                 if (jobname && owner && job_com && tilldate && fields && description && start_sal && end_sal) {
-                    if(tilldate < today){
+                    if(tilldate > today){
                         try {
                             const result = new JobModal({
                                 jobname: jobname,
