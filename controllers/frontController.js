@@ -278,7 +278,7 @@ class frontController {
                 res.redirect('/rec_jobs')
             } else {
                 if (jobname && owner && job_com && tilldate && fields && description && start_sal && end_sal) {
-                    if(tilldate > today){
+                    
                         try {
                             const result = new JobModal({
                                 jobname: jobname,
@@ -300,10 +300,10 @@ class frontController {
                         } catch (error) {
                         console.log(error)
                         }  
-                    } else {
+                    /* } else {
                         req.flash('error', 'Please Enter Valid Date!')
                     res.redirect('/rec_jobs')
-                    }
+                    }*/
                 } else {
                     req.flash('error', 'Please Fill Out All The Fields!')
                     res.redirect('/rec_jobs')
