@@ -143,7 +143,7 @@ class frontController {
             } else {
                 if (name && email && phone && password && c_password && age && edu == -1) {
                     if (age >= 18) {
-                        if (edu != -1) {
+                        if (edu == -1) {
                             if (password == c_password) {
                                 try {
                                     const hashpassword = await bcrypt.hash(password, 10)
