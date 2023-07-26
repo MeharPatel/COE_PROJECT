@@ -292,7 +292,7 @@ class frontController {
                             end_sal: end_sal,
                         })
                         await result.save()
-                        this.SendEmailJob("addedjob", req.body.job_name, owner, req.recruiter.email)
+                        this.SendEmailJob("addedjob", req.body.jobname, owner, req.recruiter.email)
                         req.flash('success', 'Successfully Announced A New Job!')
                         res.redirect('/rec_jobs')
                     } catch (error) {
