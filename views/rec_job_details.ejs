@@ -1,45 +1,201 @@
 <%- include('./rec_header.ejs') %>
 
-<script>
-    deactiveLink();
-    activeLink(1);
-    activeLink(4);
-  </script>
+    <script>
+        deactiveLink();
+        activeLink(1);
+        activeLink(4);
+    </script>
 
-<div class="text-start back mt-3 ms-5">
-    <a href="/rec_jobs" style="text-decoration: none;">
-      <ion-icon name="chevron-back-circle-outline" style="font-size: 3em; color: rgb(0, 64, 107);"></ion-icon>
-    </a>
-  </div>
+    <div class="text-start mt-3 ms-5">
+        <a href="/rec_jobs" style="text-decoration: none;">
+            <ion-icon name="chevron-back-circle-outline" style="font-size: 3em; color: rgb(0, 64, 107);"></ion-icon>
+        </a>
+    </div>
 
-  <div class="details container text-center mb-3">
-    <div>
-        <p class="fs-1">JobName</p>
-    </div>
-    <div>
-        <p class="fs-5">
-            Posted By : Name 
-        </p>
-        <p class="fs-5">
-            From The Company : Company Name 
-        </p>
-    </div>
-    <div>
-        <p class="fs-6 text-center px-3">Description</p>
-    </div>
-    <div>
-        <p class="fs-5">
-            Applicable Till : Date
-        </p>
-    </div>
-    <div>
-        <p class="fs-5">
-            Salary Offered : From to To Per Annum
-        </p>
-    </div>
-    <div class="text-end">
-        <a href="#" class="btn me-3 disabled">Apply</a>
-    </div>
-  </div>
+    <div class="details container text-center mb-3">
+        <div>
+            <p class="fs-1">
+                <%= d.jobname %>
+            </p>
+        </div>
+        <div>
+            <p class="fs-5">
+                Posted By : <%= d.postedby %>
+            </p>
+            <p class="fs-5">
+                From The Company : <%= d.bycompany %>
+            </p>
+        </div>
+        <div>
+            <p class="fs-6 text-center px-3">
+                <%= d.description %>
+            </p>
+        </div>
+        <div>
+            <p class="fs-5">
+                Applicable Till : <%= d.tilldate.toLocaleDateString() %>
+            </p>
+        </div>
+        <div>
+            <p class="fs-5">
+                Knowledge Needed : <%= d.fields %>
+            </p>
+        </div>
+        <div>
+            <p class="fs-5">
+                Salary Offered : <%= d.start_sal %> to <%= d.end_sal %> Per Annum
+            </p>
+        </div>
+        <div class="buttons text-end">
+            <a href="#" class="btn me-3 disabled">Apply</a>
+            <% if(d.postedby==n) { %>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#editjob" class="btn btn-outline-primary me-3">Edit Announcement Details</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#deletejob" class="btn btn-outline-danger me-3">Delete Announcement</a>
+        </div>
+        <% if(message1.length> 0){ %>
+            <div class="alert alert-danger mx-5 my-3">
+                <%= message1 %>
+            </div>
+            <% } %>
+                <% if(message2.length> 0){ %>
+                    <div class="alert alert-success mx-5 my-3">
+                        <%= message2 %>
+                    </div>
+                    <% } %>
+                        <div class="my-5">
+                            <p class="fs-5">
+                                List of People who applied :
+                            </p>
+                        </div>
 
-<%- include('./footer.ejs') %>
+                        <% i=1 %>
+                            <% appdata.forEach((item)=> { %>
+                                <div class="text-start mb-3">
+                                    <button class="btn btn-outline-info list-inline" type="button"
+                                        data-bs-toggle="collapse" style="width: 40%;"
+                                        data-bs-target="#collapseExample<%= i %>" aria-expanded="false"
+                                        aria-controls="collapseExample<%= i %>">
+                                        <p class="fs-6 list-inline-item">
+                                            <%= i %>.]
+                                        </p>
+                                        <p class="ms-3 fs-6 list-inline-item">
+                                            <%= item.emp_name %>
+                                        </p>
+                                    </button>
+                                    <div class="collapse" id="collapseExample<%= i %>">
+                                        <div class="card card-body">
+                                            <div class="text-center mb-2"> Name : <%= item.emp_name %>
+                                            </div>
+                                            <div class="text-center mb-2"> Email : <%= item.emp_email %>
+                                            </div>
+                                            <div class="text-center mb-2"> Contact no. : <%= item.emp_phone %>
+                                            </div>
+                                            <div class="text-center mb-2"> Qualification : <%= item.emp_qua %>
+                                            </div>
+                                            <div class="text-center mb-2"> Resume : <button class="btn btn-outline-info"
+                                                    type="submit"><a href="<%= item.emp_resume.url %>"
+                                                        download="<%= item.emp_resume.url %>" target="_blank"
+                                                        style="text-decoration: none;">Download Resume File</a></button>
+                                            </div>
+                                            <div class="text-center">
+                                                <form action="/applierstatusupdate" method="post">
+                                                    <input type="hidden" name="id" value="<%= item._id %>">
+                                                    <input type="hidden" name="emp_id" value="<%= item.emp_id %>">
+                                                    <input type="hidden" name="job_id" value="<%= item.job_id %>">
+                                                    <% if(item.approval=="Approved" ) { %>
+                                                        <button name="approval" class="btn disabled me-2">Already <%=
+                                                                item.approval %> And Listed For Interview</button>
+                                                        <button name="approval" value="Rejected"
+                                                            class="btn btn-outline-warning me-2">Change To
+                                                            Reject</button>
+                                                        <% } else if(item.approval=="Rejected" ) { %>
+                                                            <button name="approval" class="btn disabled me-2">Already
+                                                                <%= item.approval %></button>
+                                                            <button name="approval" value="Approved"
+                                                                class="btn btn-outline-success me-2">Change To
+                                                                Approve</button>
+                                                            <% } else { %>
+                                                                <button name="approval"
+                                                                    class="btn btn-outline-success me-2"
+                                                                    value="Approved">Approve</button>
+                                                                <button name="approval"
+                                                                    class="btn btn-outline-success me-2"
+                                                                    value="Rejected">Reject</button>
+                                                                <% } %>
+                                                                    <a href="/applierdelete/<%= item._id %>"
+                                                                        class="btn btn-outline-danger">Delete</a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% i++ %>
+                                        <% }) %>
+                                </div>
+                                <% } %>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editjob" tabindex="-1" aria-labelledby="editjob" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Job</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/editjob/<%= d._id %>" method="post">
+                        <div class="text-center">
+                            <input class="form-control" type="text" name="jobname" id="jobname"
+                                value="<%= d.jobname %>">
+                        </div>
+                        <div class="mt-3 text-center">
+                            <input class="form-control" type="text" name="tilldate" id="tilldate"
+                                value="<%= d.tilldate %>" onfocus="(this.type = 'date')"
+                                onfocusout="(this.type='text')">
+                        </div>
+                        <div class="mt-3 text-center">
+                            <input class="form-control" type="text" name="fields" id="field" value="<%= d.fields %>">
+                        </div>
+                        <div class="mt-3 text-center">
+                            <textarea class="form-control" name="description" id="description" cols="30" rows="5"
+                                placeholder="<%= d.description %>" value="<%= d.description %>"></textarea>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <input class="form-control" type="text" pattern="[0-9]{,10}" title="Enter Valid Salary"
+                                min="25000" name="start_sal" id="start_sal" value="<%= d.start_sal %>">
+                            <input class="form-control" type="text" pattern="[0-9]{,10}" title="Enter Valid Salary"
+                                min="25000" name="end_sal" id="end_sal" value="<%= d.end_sal %>">
+                        </div>
+                        <div class="mt-3 text-center">
+                            <button type="submit" class="btn btn-primary">Edit Job Details</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deletejob" tabindex="-1" aria-labelledby="deletejob" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Job</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/deletejob/<%= d._id %>">
+                        <div class="text-center" style="color: red;">
+                            Are You Sure You Want To Delete Your Announced Job?
+                        </div>
+                        <div class="mt-3 text-center">
+                            <button type="submit" class="btn btn-outline-danger">Delete Announcement</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./footer.ejs') %>

@@ -12,30 +12,30 @@
 <body class="container-fluid">
     <div class="container middle my-5" style="height: 45em;">
         <form action="/empinsert" method="post" enctype="multipart/form-data" class="reg">
-            <div class="logo text-center mt-4 mb-3" style="--s: 7%"><img src="images/logo11.jpg" alt="Logo"></div>
-            <div class="inp_head" style="--i: 22%">
+            <div class="inp_head" style="--i: 22%; --j: 22%">
                 <p>Employee</p>
             </div>
+            <div class="logo text-center mt-4 mb-3" style="--s: 7%"><img src="images/logo11.jpg" alt="Logo"></div>
             <% if(message.length > 0){ %>
                 <div class="alert alert-danger mx-5">
                     <%= message %>
                 </div>
             <% } %>
             <div class="ms-3 text-center">
-                <input class="form-control" type="text" name="name" id="name" placeholder="Name" autocomplete="off" required>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name" autocomplete="off">
             </div>
             <div class="mt-3 ms-3 text-center">
-                <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="off" title="Enter Valid Email" required>
+                <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="off" title="Enter Valid Email">
             </div>
             <div class="mt-3 ms-3 text-center">
-                <input class="form-control" type="text" name="phone" pattern="[0-9]{10}" id="phone" placeholder="Mobile No." autocomplete="off" required>
+                <input class="form-control" type="text" name="phone" pattern="[0-9]{10}" id="phone" placeholder="Mobile No." autocomplete="off">
             </div>
             <div class="mt-3 ms-3 text-center">
-                <input class="form-control" type="text" name="age" pattern="[0-9]{,2}" id="age" placeholder="Age" autocomplete="off" title="Please Enter Valid Age" required>
+                <input class="form-control" type="text" name="age" pattern="[0-9]{,2}" id="age" placeholder="Age" autocomplete="off" title="Please Enter Valid Age">
             </div>
             <div class="mt-3 ms-3 text-center">
-                <select class="form-control" name="edu" id="edu" required>
-                    <option value="-1">Education Qulification</option>
+                <select class="form-control" name="edu" id="edu">
+                    <option value="None">Education Qulification</option>
                     <option value="under 10th">under 10th</option>
                     <option value="10th Passed">10th Passed</option>
                     <option value="12th Passed">12th Passed</option>
@@ -44,12 +44,12 @@
                   </select>
             </div>
             <div class="mt-3 ms-3 text-center">
-                <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password" title="Length 8 and must contain An uppercase, A lowercase and numbers!" required>
+                <input id="pass1" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password" placeholder="Password" title="Length 8 and must contain An uppercase, A lowercase and numbers!">
             </div>
             <div class="mt-3 ms-3 text-center">
-                <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password" title="Length 8 and must contain An uppercase, A lowercase and numbers!" required>
+                <input id="pass2" class="form-control" type="password" name="c_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="c_password" placeholder="Confirm Password" title="Length 8 and must contain An uppercase, A lowercase and numbers!">
             </div>
-            <div class="inp_show mt-3 ms-3">
+            <div class="inp_show mt-3">
                 <div class="show_box">
                     <input type="checkbox" name="show" id="show" onclick="showpassword()">
                 </div>
@@ -62,7 +62,7 @@
                     <label for="resume">Resume File (Please Enter PDF File)</label>
                 </div>
                 <div class="resume_file">
-                    <input class="form-control" type="file" name="resume" accept="application/pdf" required title="Enter Only Pdf Files">
+                    <input class="form-control" type="file" name="resume" accept="application/pdf" title="Enter Only Pdf Files">
                 </div>
             </div>
             <div class="mt-3 text-center">

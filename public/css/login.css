@@ -33,11 +33,6 @@ body{
     opacity: 1;
 }
 
-.middle form.anim{
-    transform: translateY(100em);
-    opacity: 0;
-}
-
 .login{
     height: 100%;
     width: 60%;
@@ -128,8 +123,63 @@ input::placeholder{
     text-decoration: underline;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 800px) {
+    body{
+        background-repeat: repeat-y;
+    }
+    
+    .middle{
+        height: 30em;
+        max-width: 45em;
+    }
+
     .login{
+        margin: auto;
         width: 100%;
+    }
+
+    .logo{
+        height: 7%;
+    }
+
+    .inp_head{
+        position: absolute;
+        margin-left: 40%;
+        margin-top: -1em;
+    }
+
+    input.form-control, input{
+        margin: auto;
+        text-align: center;
+        align-self: center;
+        width: 80%;
+        height: 130%;
+    }
+    
+    .inp_show{
+        margin-left: 15%;
+        display: flex;
+    }
+
+    .btn{
+        width: 30%;
+    }
+    
+}
+
+@media screen and (max-width : 600px){
+    .middle{
+        height: 35em;
+        max-width: 30em;
+    }
+
+    .inp_head{
+        position: absolute;
+        margin-left: -7em;
+        margin-top: -3em;
+    }
+
+    .login{
+        margin-top: 2em;
     }
 }

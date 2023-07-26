@@ -6,6 +6,8 @@ body{
     background-color: var(--bg);
 }
 
+/* Navbar */
+
 .navbar {
     background-color: rgb(46, 171, 255);
 }
@@ -14,16 +16,14 @@ body{
     height: 2.3em;
 }
 
-.navbar .nav-name{
-    left: 20em;
-}
-
 .navbar .nav-profile img{
     height: 3em;
     width: 3em;
     border-radius: 50%;
     border: 0.1em solid black;
 }
+
+/* Home */
 
 .bg {
     top: 1em;
@@ -56,6 +56,8 @@ body{
     display: none;
 }
 
+
+
 .job_add ion-icon:hover{
     transform: rotateZ(180deg) scale(1.2);
     transition: 0.5s all ease-out 0s;
@@ -65,63 +67,71 @@ body{
     transition: 0.5s all ease-out 0s;
 }
 
-.card:nth-child(4n+1){
+#jobs .cards .card:nth-child(4n+1){
     background: url('../images/pic29.jpg') no-repeat center center;
     background-size: cover;
     border: 0.1em solid rgb(0, 114, 190);
     border-radius: 1em;
 }
-.card:nth-child(4n+2){
+#jobs .cards .card:nth-child(4n+2){
     background: url('../images/pic27.jpg') no-repeat center center;
     background-size: cover;
     border: 0.1em solid rgb(0, 114, 190);
     border-radius: 1em;
 }
-.card:nth-child(4n+3){
+#jobs .cards .card:nth-child(4n+3){
     background: url('../images/pic26.jpg') no-repeat center center;
     background-size: cover;
     border: 0.1em solid rgb(0, 114, 190);
     border-radius: 1em;
 }
-.card:nth-child(4n+0){
+#jobs .cards .card:nth-child(4n+0){
     background: url('../images/pic28.jpg') no-repeat center center;
     background-size: cover;
     border: 0.1em solid rgb(0, 114, 190);
     border-radius: 1em;
 }
-.card{
+#jobs .cards .card{
     overflow: hidden;
     border-radius: 2em;
 }
 
-.card .card-header, .card .card-footer{
+#jobs .cards .card .card-header, .card .card-footer{
     background-color: rgba(0, 114, 190, 0.8);
     color: white;
 }
 
-.card .card-body{
+#jobs .cards .card .card-body{
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(0.2em);
     color: beige;
 }
 
-.card:hover{
+#jobs .cards .card:hover{
     transform-style: preserve-3d;
     perspective: 1em;
     transform: scale(1.02);
     transition: 0.5s all ease-out 0s;
 }
 
-.card .btn{
+#jobs .cards .card .btn{
     background-color: rgba(0, 114, 190, 0.8);
     border: 0.1em solid rgb(0, 114, 190);
     color: white;
 }
 
-.card .btn:hover{
+#jobs .cards .card .btn:hover{
     background-color: rgba(0, 114, 190, 0.2);
     border: 0.1em solid rgb(0, 114, 190);
     color: black;
+}
+
+.collapse .card{
+    border: 0.01em solid rgb(0, 174, 255);
+}
+
+summary::marker{
+    display: none;
 }
 
 #my_account table img{
@@ -131,26 +141,6 @@ body{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-#my_account .buttons .btn.edit{
-    border: 0.1em solid rgb(0, 202, 0);
-    color: rgb(0, 202, 0);
-}
-#my_account .buttons .btn.delete{
-    border: 0.1em solid rgb(255, 0, 0);
-    color: rgb(255, 0, 0);
-}
-
-#my_account .buttons .btn.edit:hover{
-    background-color: rgba(0, 202, 0, 0.2);
-    border: 0.1em solid rgb(0, 202, 0);
-    color: rgb(0, 202, 0);
-}
-#my_account .buttons .btn.delete:hover{
-    background-color: rgba(255, 0, 0, 0.2);
-    border: 0.1em solid rgb(255, 0, 0);
-    color: rgb(255, 0, 0);
 }
 
 .end {
@@ -181,6 +171,10 @@ body{
     margin-right: 3em;
 }
 
+.end-contact-item{
+    margin-bottom: 0.5em;
+}
+
 footer{
     background-color: rgb(46, 171, 255);
      color: black;
@@ -202,4 +196,61 @@ footer{
 
 .modal#addjob form:invalid{
     border: 0.1em solid red;
+}
+
+@media screen and (max-width : 800px) {
+    .about .container {
+        display: grid;
+        grid-template-columns: '1fr 2fr'
+                                '2fr 1fr'
+                                '1fr 2fr';
+    }
+    
+    .about-image img {
+        height: 8em;
+        width: 8em;
+    }
+
+    #my_account .buttons, .details .buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+    }
+
+    #my_account .buttons button, .details .buttons a{
+        margin-bottom: 0.5em;
+    }
+
+    #my_account table img{
+        height: 6em;
+        width: 6em;
+    }
+
+    #my_account table tr{
+        word-wrap: break-word;
+    }
+    
+    .end {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .end-about, .end-contact {
+        width: 80%;
+    }
+    
+    .end-about .btn {
+        height: 100%;
+    }
+    
+    .end-about .btn ion-icon {
+        font-size: 1.2em;
+    }
+
+    .end-contact-item{
+        margin-bottom: 0;
+    }
 }

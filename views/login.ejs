@@ -12,11 +12,11 @@
 <body>
     <div class="container middle my-5">
         <form action="/verifylogin" method="post" class="login" id="form">
-            <div class="logo text-center mt-5 mb-3">
-                <img src="images/logo11.jpg" alt="Logo">
-            </div>
             <div class="inp_head">
                 <p>Login</p>
+            </div>
+            <div class="logo text-center mt-5 mb-3">
+                <img src="images/logo11.jpg" alt="Logo">
             </div>
             <% if(message.length > 0){ %>
                 <div class="alert alert-danger mx-5">
@@ -33,10 +33,10 @@
                 <div class="show_box"> 
                     <input type="checkbox" name="show" id="show" onclick="showpassword()">
                 </div>
-                <div class="show_label ms-2">
+                <div class="show_label text-start ms-2">
                     <label for="show">Show Password</label>
                 </div>
-                <div class="forgot">
+                <div class="forgot text-end">
                     <a href="#">Forgot Password?</a>
                 </div>
             </div>

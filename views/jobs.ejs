@@ -7,14 +7,17 @@
   </script>
 
   <div class="container my-5" id="jobs">
-    <div class="buttons text-center">
-      <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);">All</button>
-      <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);">Applied</button>
-      <button type="button" class="btn me-5"
-        style="border: 0.1em solid rgb(46, 171, 255); color: rgb(46, 171, 255);">Available</button>
-    </div>
+
+    <% if(message1.length > 0){ %>
+      <div class="alert alert-danger mx-5 my-3">
+          <%= message1 %>
+      </div>
+    <% } %>
+    <% if(message2.length > 0){ %>
+      <div class="alert alert-success mx-5 my-3">
+          <%= message2 %>
+      </div>
+    <% } %>
 
     <div class="cards">
       <% d.forEach((item)=> { %>
@@ -29,8 +32,8 @@
             </p>
             <p class="card-text">Posted by : <%= item.postedby %></p>
             <p class="card-text"><%= item.start_sal %> To <%= item.end_sal %> Per Annum</p>
-            <a href="#" class="btn me-3">Apply</a>
-            <a href="/job_details" class="btn">Check Details</a>
+            <!-- <a href="/applyjob/<%= item._id %>" class="btn me-3">Apply</a> -->
+            <a href="/job_details/<%= item._id %>" class="btn">Check Details</a>
           </div>
           <div class="card-footer fs-6">
             Available Till <%= item.tilldate.toDateString() %>
@@ -40,19 +43,26 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Apply Jobs Modal -->
+  <div class="modal fade" id="applyjob" tabindex="-1" aria-labelledby="applyjob" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Announce New Job</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <form action="/applyjob" method="post" enctype="multipart/form-data">
+            <div class="text-center">
+              <input class="form-control" type="text" name="company" id="company" value="" readonly>
+            </div>
+            <div class="text-center">
+              <p class="fs-4">Do You Want To Apply For This Job?</p>
+            </div>
+            <div class="mt-3 text-center">
+              <button type="submit" class="btn btn-primary">Apply</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

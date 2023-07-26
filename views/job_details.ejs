@@ -1,4 +1,4 @@
-<%- include('./rec_header.ejs') %>
+<%- include('./header.ejs') %>
 
 <script>
     deactiveLink();
@@ -14,31 +14,46 @@
 
   <div class="details container text-center mb-3">
     <div>
-        <p class="fs-1">JobName</p>
+        <p class="fs-1"><%= d.jobname %></p>
     </div>
     <div>
         <p class="fs-5">
-            Posted By : Name 
+            Posted By : <%= d.postedby %> 
         </p>
         <p class="fs-5">
-            From The Company : Company Name 
-        </p>
-    </div>
-    <div>
-        <p class="fs-6 text-center px-3">Description</p>
-    </div>
-    <div>
-        <p class="fs-5">
-            Applicable Till : Date
+            From The Company : <%= d.bycompany %> 
         </p>
     </div>
     <div>
+        <p class="fs-6 text-center px-3"><%= d.description %></p>
+    </div>
+    <div>
         <p class="fs-5">
-            Salary Offered : From to To Per Annum
+            Applicable Till : <%= d.tilldate.toLocaleDateString() %>
+        </p>
+    </div>
+    <div>
+        <p class="fs-5">
+            Knowledge Needed : <%= d.fields %>
+        </p>
+    </div>
+    <div>
+        <p class="fs-5">
+            Salary Offered : <%= d.start_sal %> to <%= d.end_sal %> Per Annum
+        </p>
+    </div>
+    <% if(app){ %>
+    <div>
+        <p class="fs-5">
+            Approval Status : <%= app.approval %>
         </p>
     </div>
     <div class="text-end">
-        <a href="#" class="btn me-3 disabled">Apply</a>
+            <a href="/applyjob/<%= d._id %>" class="btn me-3 disabled">Applied</a>
+        <% } else { %>
+        <div class="text-end">
+            <a href="/applyjob/<%= d._id %>" class="btn btn-outline-primary me-3">Apply</a>
+        <% } %>
     </div>
   </div>
 

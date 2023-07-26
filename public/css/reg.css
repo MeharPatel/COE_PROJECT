@@ -103,6 +103,7 @@ input::placeholder{
 
 .inp_show{
     display: flex;
+    margin-left: 1em;
 }
 
 .inp_show .show_box{
@@ -124,8 +125,67 @@ input::placeholder{
     text-decoration: underline;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 800px) {
+    body{
+        background-repeat: repeat-y;
+    }
+    
+    .middle{
+        height: 30em;
+        max-width: 45em;
+    }
+
     .reg{
+        margin: auto;
         width: 100%;
+    }
+
+    .logo{
+        height: 7%;
+    }
+
+    .inp_head{
+        position: absolute;
+        margin-left: var(--j);
+        margin-top: -1em;
+    }
+
+    .form-control{
+        margin: auto;
+        text-align: center;
+        align-self: center;
+        width: 80%;
+        height: 130%;
+    }
+    
+    .inp_show{
+        margin-left: 13%;
+        display: flex;
+    }
+
+    .resume_label{
+        margin-left: 13%;
+    }
+
+    .btn{
+        width: 30%;
+    }
+    
+}
+
+@media screen and (max-width : 600px){
+    .middle{
+        height: 35em;
+        max-width: 30em;
+    }
+
+    .inp_head{
+        position: absolute;
+        margin-left: -9em;
+        margin-top: -3em;
+    }
+
+    .reg{
+        margin-top: 2em;
     }
 }
