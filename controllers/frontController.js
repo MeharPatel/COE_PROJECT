@@ -279,7 +279,7 @@ class frontController {
             res.redirect('/rec_jobs')
         } else {
             if (jobname && owner && job_com && tilldate && fields && description && start_sal && end_sal) {
-                if (today.toLocaleDateString() > tilldate1.toLocaleDateString()) {
+                if (today < tilldate1) {
                     try {
                         const result = new JobModal({
                             jobname: jobname,
@@ -590,7 +590,7 @@ class frontController {
             req.flash('error', 'You Have One Announced Job Under The Similar Title!')
             res.redirect(req.get('referer'))
         } else {
-            if (today.toLocaleDateString() > tilldate1.toLocaleDateString()) {
+            if (today < tilldate1) {
                 try {
                     const data = ({
                         jobname: jobname,
