@@ -453,7 +453,7 @@ class frontController {
                     emp_name : req.body.name,
                     emp_email : req.body.email,
                     emp_phone : req.body.phone,
-                    emp_qua : req.body.edu,
+                    emp_qua : (req.body.edu == -1) ? qualification : req.body.edu,
                     emp_resume : {
                         public_id : myresume.public_id,
                         url : myresume.secure_url,
@@ -471,7 +471,7 @@ class frontController {
                     emp_name : req.body.name,
                     emp_email : req.body.email,
                     emp_phone : req.body.phone,
-                    emp_qua : req.body.edu,
+                    emp_qua : (req.body.edu == -1) ? qualification : req.body.edu,
                 }
             }
             const editdetailsemp = await EmployeeModal.findByIdAndUpdate(req.employee._id, data)
@@ -484,15 +484,13 @@ class frontController {
     static editdetailsrec = async (req, res) => {
         try {
             var data = {
-                name: req.body.name,
-                email: req.body.email,
                 phone: req.body.phone,
                 company: req.body.company,
             }
             var job_data = {
-                bycomapny : req.body.company,
+                bycompany : req.body.company,
             }
-            const editjobdetails = await JobModal.updateMany({postedby: req.recruiter.name}, job_data)
+            const editjobdetails = await JobModal.updateMany({postedby : req.recruiter.name}, job_data)
             const editdetailsrec = await RecruiterModal.findByIdAndUpdate(req.recruiter._id, data)
             res.redirect('/rec_my_account')
         } catch (error) {
@@ -509,6 +507,7 @@ class frontController {
             }
             const resume_id = employee.profile.public_id
             await cloudinary.uploader.destroy(resume_id)
+            const applier = await ApplierModal.deleteMany({emp_id : req.employee._id})
             const deleteemp = await EmployeeModal.findByIdAndDelete(req.employee._id)
             res.redirect('/')
         } catch (error) {
@@ -522,7 +521,8 @@ class frontController {
             if (profile_id != "COE_Project/Profile/default_user_modjhr.jpg") {
                 await cloudinary.uploader.destroy(profile_id)
             }
-            const deleterec = await RecruiterModal.findByIdAndUpdate(req.recruiter._id)
+            const deleterec = await RecruiterModal.findByIdAndDelete(req.recruiter._id)
+            const jobs = await JobModal.deleteMany({postedby: req.recruiter.name})
             res.redirect('/')
         } catch (error) {
             console.log(error)
