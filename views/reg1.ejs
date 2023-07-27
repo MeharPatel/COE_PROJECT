@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/reg.css">
 </head>
 <body class="container-fluid">
-    <div class="container middle my-5" style="height: 30em;">
+    <div class="container middle my-5" style="--h1: 30em; --h2: 35em">
         <form action="/decideuser" method="post" class="reg">
             <div class="logo text-center mt-4 mb-5" style="--s: 10%"><img src="images/logo11.jpg" alt="Logo"></div>
             <div class="inp_head" style="--i: 40%; --j: 30%">
@@ -21,10 +21,16 @@
                 <div class="label-cat">
                     <p class="fs-5">Are You looking for job openings? <br> OR <br> Are you looking to hiring employees?</p>
                 </div>
-                    <label for="category">I'm an Employee </label>
-                    <input type="radio" name="category" value="employee" checked>
-                    <label for="category">I'm a Recruiter </label>
-                    <input type="radio" name="category" value="recruiter">
+                <div class="cat">
+                    <div class="cat1 me-3">
+                        <label class="cat_label" for="category">I'm an Employee </label>
+                        <input class="cat_radio" type="radio" name="category" value="employee" checked> <br>
+                    </div>
+                    <div class="cat2">    
+                        <label class="cat_label" for="category">I'm a Recruiter </label>
+                        <input class="cat_radio" type="radio" name="category" value="recruiter">
+                    </div>
+                </div>
             </div>
             
             <div class="mt-3 text-center">
